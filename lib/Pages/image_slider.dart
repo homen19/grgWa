@@ -40,72 +40,66 @@ class ImageChanger extends State<Image_slider> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Stack(
-              children: [
-                InkWell(
-                  onTap: () {
-                    print(currentIndex);
-                  },
-                  child: Center(
-                    child: Container(
-                      margin: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.height * 0.1),
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      height: MediaQuery.of(context).size.height * 0.67,
-                      // color: Colors.amber,
-                      child: CarouselSlider(
-                        items: myData
-                            .map(
-                              (item) => Column(
-                                children: [
-                                  Image.asset(
-                                    item["image"],
-                                    // fit: BoxFit.cover,
-                                    width: double.infinity,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsets.only(
-                                        top:
-                                            MediaQuery.of(context).size.height *
-                                                0.03,
-                                        bottom:
-                                            MediaQuery.of(context).size.height *
-                                                0.005),
-                                    child: Text(
-                                      item["text1"],
-                                      textAlign: TextAlign.center,
-                                      style: const TextStyle(
-                                          fontSize: 23,
-                                          fontWeight: FontWeight.w900),
-                                    ),
-                                  ),
-                                  Text(
-                                    item["text2"],
-                                    style: const TextStyle(
-                                        fontSize: 19, color: Colors.black54),
-                                  )
-                                ],
+            InkWell(
+              onTap: () {
+                print(currentIndex);
+              },
+              child: Center(
+                child: Container(
+                  margin: EdgeInsets.only(
+                      top: MediaQuery.of(context).size.height * 0.1),
+                  width: MediaQuery.of(context).size.width * 0.9,
+                  height: MediaQuery.of(context).size.height * 0.67,
+                  // color: Colors.amber,
+                  child: CarouselSlider(
+                    items: myData
+                        .map(
+                          (item) => Column(
+                            children: [
+                              Image.asset(
+                                item["image"],
+                                // fit: BoxFit.cover,
+                                width: double.infinity,
                               ),
-                            )
-                            .toList(),
-                        carouselController: carouselController,
-                        options: CarouselOptions(
-                            // width: MediaQuery.of(context).size.width * 0.9,
-                            height: MediaQuery.of(context).size.height * 0.7,
-                            scrollPhysics: const BouncingScrollPhysics(),
-                            autoPlay: true,
-                            aspectRatio: 2,
-                            viewportFraction: 1,
-                            onPageChanged: (index, reason) {
-                              setState(() {
-                                currentIndex = index;
-                              });
-                            }),
-                      ),
-                    ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    top: MediaQuery.of(context).size.height *
+                                        0.03,
+                                    bottom: MediaQuery.of(context).size.height *
+                                        0.005),
+                                child: Text(
+                                  item["text1"],
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                      fontSize: 23,
+                                      fontWeight: FontWeight.w900),
+                                ),
+                              ),
+                              Text(
+                                item["text2"],
+                                style: const TextStyle(
+                                    fontSize: 19, color: Colors.black54),
+                              )
+                            ],
+                          ),
+                        )
+                        .toList(),
+                    carouselController: carouselController,
+                    options: CarouselOptions(
+                        // width: MediaQuery.of(context).size.width * 0.9,
+                        height: MediaQuery.of(context).size.height * 0.7,
+                        scrollPhysics: const BouncingScrollPhysics(),
+                        autoPlay: true,
+                        aspectRatio: 2,
+                        viewportFraction: 1,
+                        onPageChanged: (index, reason) {
+                          setState(() {
+                            currentIndex = index;
+                          });
+                        }),
                   ),
                 ),
-              ],
+              ),
             ),
             DotsIndicator(
               dotsCount: myData.length,
